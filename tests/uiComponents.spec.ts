@@ -198,3 +198,29 @@ test('Datepicker', async ({ page }) => {
   await page.locator('[class="day-cell ng-star-inserted"]').getByText(expectedDate, { exact: true }).click();
   await expect(calendarInputField).toHaveValue(dateToAssert);
 });
+
+test('Sliders', async ({ page }) => {
+  await page.getByText('IoT Dashboard').click();
+
+  // Update the attribute
+  // const tempGauge = page.locator('[tabtitle="Temperature"] ngx-temperature-dragger circle');
+  // await tempGauge.evaluate((node) => {
+  //   node.setAttribute('cx', '232.110'), node.setAttribute('cy', '232.110');
+  // });
+  // await tempGauge.click();
+
+  // Mouse movement
+  const tempBox = page.locator('[tabtitle="Temperature"] ngx-temperature-dragger');
+  await tempBox.scrollIntoViewIfNeeded();
+
+  const box = await tempBox.boundingBox();
+  const x = box!.x + box!.width / 2;
+  const y = box!.y + box!.height / 2;
+  await page.mouse.move(x, y);
+  await page.mouse.down();
+  await page.mouse.move(x + 25, y);
+  await page.mouse.move(x + 25, y + 25);
+  await page.mouse.up();
+
+  await expect(tempBox).toContainText('28');
+});
