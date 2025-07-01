@@ -30,18 +30,20 @@ export default defineConfig({
 
         /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
         trace: "on-first-retry",
+        extraHTTPHeaders: {
+            Authorization: `Token ${process.env.ACCESS_TOKEN}`,
+        },
     },
 
     /* Configure projects for major browsers */
     projects: [
         {
             name: "setup",
-            testDir: "src/authSetup",
-            testMatch: "auth.setup.ts",
+            testMatch: "authSetup.ts",
         },
         {
             name: "chromium",
-            use: { ...devices["Desktop Chrome"], storageState: "tests/.authSetup/authFIles/user.json" },
+            use: { ...devices["Desktop Chrome"], storageState: "tests/.authSetup/authFiles/user.json" },
             dependencies: ["setup"],
         },
 
