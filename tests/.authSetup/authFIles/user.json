@@ -1,0 +1,14 @@
+{
+  "cookies": [],
+  "origins": [
+    {
+      "origin": "https://conduit.bondaracademy.com",
+      "localStorage": [
+        {
+          "name": "jwtToken",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyOTUyM30sImlhdCI6MTc1MTM4OTkzMiwiZXhwIjoxNzU2NTczOTMyfQ.r6nWEQhBT0a4EvxQUq-YGSoMylGhe6TBKvi88Cji0yM"
+        }
+      ]
+    }
+  ]
+}

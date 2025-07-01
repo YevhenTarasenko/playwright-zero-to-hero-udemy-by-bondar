@@ -9,12 +9,6 @@ test.beforeEach(async ({ page }) => {
     });
 
     await page.goto("https://conduit.bondaracademy.com/");
-    await page.waitForResponse("https://conduit-api.bondaracademy.com/api/tags");
-
-    await page.getByText("Sign in").click();
-    await page.getByRole("textbox", { name: "Email" }).fill("yevhentarasenko@gmail.com");
-    await page.getByRole("textbox", { name: "Password" }).fill("Qwerty12345%");
-    await page.getByRole("button").click();
 });
 
 test("Check article after mocking", async ({ page }) => {
