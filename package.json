@@ -1,16 +1,20 @@
 {
-  "name": "playwright-zero-to-hero-udemy-by-bondar",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {},
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "devDependencies": {
-    "@playwright/test": "^1.53.1",
-    "@types/node": "^24.0.3",
-    "prettier": "3.6.2"
-  }
+    "name": "playwright-zero-to-hero-udemy-by-bondar",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "pw-chrome": "npx playwright test usePageObjects.spec.ts --project=chromium",
+        "pw-firefox": "npx playwright test usePageObjects.spec.ts --project=firefox",
+        "pw-ui-mode": "npx playwright test --ui-host=0.0.0.0"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "commonjs",
+    "devDependencies": {
+        "@playwright/test": "^1.53.1",
+        "@types/node": "^24.0.3",
+        "prettier": "3.6.2"
+    }
 }
