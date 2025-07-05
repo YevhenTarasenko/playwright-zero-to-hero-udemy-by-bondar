@@ -32,8 +32,8 @@ test("parametrized methods", async ({ page }) => {
 
     // screenshot for all FormLayout page
     await page.screenshot({ path: "screenshots/formsLayoutsPage.png" });
-    const buffer = await page.screenshot();
-    console.log(buffer.toString("base64"));
+    // const buffer = await page.screenshot();
+    // console.log(buffer.toString("base64"));
 
     await pm.onFormLayoutPage().submitInlineFormWithNameEmailAndCheckbox(randomFullName, randomEmail, true);
 

@@ -134,6 +134,6 @@ test("assertions", async ({ page }) => {
     await expect(basicFormButton).toHaveText("Submit");
 
     //soft assertion
-    await expect.soft(basicFormButton).toHaveText("Submit5");
+    await expect.soft(basicFormButton).toHaveText("Submit");
     await basicFormButton.click();
 });
