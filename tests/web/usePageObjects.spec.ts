@@ -3,7 +3,7 @@ import { PageManager } from "../../src/pages/PageManager";
 import { faker } from "@faker-js/faker";
 
 test.beforeEach(async ({ page }) => {
-    await page.goto("http://localhost:4200/");
+    await page.goto("/");
 });
 
 test("navigate to form page", async ({ page }) => {
@@ -24,7 +24,11 @@ test("parametrized methods", async ({ page }) => {
     await pm.navigateTo().formLayoutsPage();
     await pm
         .onFormLayoutPage()
-        .submitUsingTheGridFormWithCredentialsAndSelectOption("test@gmail.com", "Qwerty12345%", "Option 1");
+        .submitUsingTheGridFormWithCredentialsAndSelectOption(
+            process.env.USER_NAME!,
+            process.env.PASSWORD!,
+            "Option 1",
+        );
 
     // screenshot for all FormLayout page
     await page.screenshot({ path: "screenshots/formsLayoutsPage.png" });
