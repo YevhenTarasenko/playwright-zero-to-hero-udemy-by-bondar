@@ -45,7 +45,7 @@ test("User facing locators", async ({ page }) => {
 
     await page.getByText("Using the grid").click();
 
-    await page.getByTestId("SignIn").click();
+    await page.getByText("SIGN IN").first().click();
 
     await page.getByTitle("IoT Dashboard").click();
 });

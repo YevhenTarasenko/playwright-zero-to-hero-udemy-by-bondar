@@ -5,8 +5,9 @@ require("dotenv").config();
 
 export default defineConfig<TestOptions>({
     timeout: 40000,
-    globalTimeout: 60000,
+    globalTimeout: undefined,
 
+    testDir: "tests",
     retries: 1,
     reporter: "html",
 
@@ -35,27 +36,39 @@ export default defineConfig<TestOptions>({
     projects: [
         {
             name: "setup",
-            testMatch: "authSetup.ts",
+            testMatch: "tests/.authSetup/authSetup.ts",
         },
         {
-            name: "chromium",
-            timeout: 30000,
-            use: { ...devices["Desktop Chrome"], storageState: "tests/.authSetup/authFiles/user.json" },
+            name: "chromium-main",
+            testIgnore: "tests/web/autoWaiting.spec.ts",
+            testMatch: "**/*.spec.ts",
+            use: {
+                ...devices["Desktop Chrome"],
+                storageState: "tests/.authSetup/authFiles/user.json",
+            },
             dependencies: ["setup"],
         },
         {
-            name: "usePageObjects",
-            testMatch: "usePageObjects.spec.ts",
+            name: "firefox-autoWaiting",
+            testMatch: "tests/web/autoWaiting.spec.ts",
             use: {
-                video: {
-                    mode: "off",
-                    size: {
-                        width: 1920,
-                        height: 1080,
-                    },
-                },
+                ...devices["Desktop Firefox"],
             },
         },
+
+        // {
+        //     name: "usePageObjects",
+        //     testMatch: "usePageObjects.spec.ts",
+        //     use: {
+        //         video: {
+        //             mode: "off",
+        //             size: {
+        //                 width: 1920,
+        //                 height: 1080,
+        //             },
+        //         },
+        //     },
+        // },
         // {
         //     name: "dev",
         //     use: { ...devices["Desktop Chrome"], baseURL: "http://localhost:4201/" },

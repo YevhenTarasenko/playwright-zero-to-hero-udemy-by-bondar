@@ -1,4 +1,4 @@
-import test, { expect, request } from "@playwright/test";
+import test, { expect } from "@playwright/test";
 import tags from "../../src/test-data/tags.json";
 
 test.beforeEach(async ({ page }) => {
@@ -85,4 +85,8 @@ test("create an article and delete", async ({ page, request }) => {
     //delete article
     const deleteArticleResponse = await request.delete(`https://conduit-api.bondaracademy.com/api/articles/${slugID}`);
     expect(deleteArticleResponse.status()).toEqual(204);
+
+    //check Feed form ui
+    await page.reload();
+    await expect(page.locator("app-article-list h1").first()).not.toContainText("PW is awesome");
 });

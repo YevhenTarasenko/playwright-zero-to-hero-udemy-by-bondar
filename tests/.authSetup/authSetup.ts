@@ -5,6 +5,8 @@ import fs from "fs";
 const authFile = "tests/.authSetup/authFiles/user.json";
 
 setup("authentication", async ({ page, request }) => {
+    console.log("Setup test started - authentication");
+
     // authentication via WEB
     // await page.goto("https://conduit.bondaracademy.com/");
 
@@ -31,4 +33,6 @@ setup("authentication", async ({ page, request }) => {
     fs.writeFileSync(authFile, JSON.stringify(user));
 
     process.env["ACCESS_TOKEN"] = accessToken;
+
+    console.log("Setup test completed - user authenticated");
 });
