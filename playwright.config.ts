@@ -6,6 +6,7 @@ require("dotenv").config();
 export default defineConfig<TestOptions>({
     timeout: 40000,
     globalTimeout: undefined,
+    workers: 10,
 
     testDir: "tests",
     retries: 1,
@@ -39,8 +40,8 @@ export default defineConfig<TestOptions>({
             testMatch: "tests/.authSetup/authSetup.ts",
         },
         {
-            name: "chromium-main",
-            testIgnore: "tests/web/autoWaiting.spec.ts",
+            name: "regression",
+            testIgnore: ["autoWaiting.spec.ts", "likesCounter.spec.ts"],
             testMatch: "**/*.spec.ts",
             use: {
                 ...devices["Desktop Chrome"],
@@ -54,6 +55,25 @@ export default defineConfig<TestOptions>({
             use: {
                 ...devices["Desktop Firefox"],
             },
+        },
+        {
+            name: "articleSetup",
+            testMatch: "newArticle.setup.ts",
+            dependencies: ["setup"],
+            teardown: "articleCleanUp",
+        },
+        {
+            name: "articleCleanUp",
+            testMatch: "articleCleanUp.setup.ts",
+        },
+        {
+            name: "likeCounter",
+            testMatch: "likesCounter.spec.ts",
+            use: {
+                ...devices["Desktop Chrome"],
+                storageState: "tests/.authSetup/authFiles/user.json",
+            },
+            dependencies: ["articleSetup"],
         },
 
         // {
