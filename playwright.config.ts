@@ -33,6 +33,8 @@ export default defineConfig<TestOptions>({
             },
         },
     },
+    globalSetup: require.resolve("./global-setup.ts"),
+    globalTeardown: require.resolve("./global-teardown.ts"),
 
     projects: [
         {
@@ -41,7 +43,7 @@ export default defineConfig<TestOptions>({
         },
         {
             name: "regression",
-            testIgnore: ["autoWaiting.spec.ts", "likesCounter.spec.ts"],
+            testIgnore: ["autoWaiting.spec.ts", "likesCounter.spec.ts", "likesCounterGlobal.spec.ts"],
             testMatch: "**/*.spec.ts",
             use: {
                 ...devices["Desktop Chrome"],
@@ -74,6 +76,14 @@ export default defineConfig<TestOptions>({
                 storageState: "tests/.authSetup/authFiles/user.json",
             },
             dependencies: ["articleSetup"],
+        },
+        {
+            name: "likeCounterGlobal",
+            testMatch: "likesCounterGlobal.spec.ts",
+            use: {
+                ...devices["Desktop Chrome"],
+                storageState: "tests/.authSetup/authFiles/user.json",
+            },
         },
 
         // {
