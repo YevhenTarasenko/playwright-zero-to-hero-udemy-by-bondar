@@ -16,17 +16,17 @@ This repository contains practical tasks from the course **Playwright: Web Autom
 ## Structure:
 
 - **/tests** — automated tests
+- **/src** - pom
 
 ## How to use:
 
 1. Clone the repository with the test app:
-
-   - Run: `git clone https://github.com/bondar-artem/pw-practice-app.git`
-   - Navigate to the folder.
-   - Run `npm install --force` to install dependencies.
+    - Run: `git clone https://github.com/bondar-artem/pw-practice-app.git`
+    - Navigate to the folder.
+    - Run `npm install --force` to install dependencies.
 
 2. Create an empty folder for the automated tests:
-   - Clone this repository with the automated tests.
-   - Run `npm install` to install dependencies.
-   - Run `npm start` to start the application.
-   - Run the tests using `npm test` or Playwright UI.
+    - Clone this repository with the automated tests.
+    - Run `npm install` to install dependencies.
+    - Run `npm start` to start the application.
+    - Run the tests using `npx playwright test`.

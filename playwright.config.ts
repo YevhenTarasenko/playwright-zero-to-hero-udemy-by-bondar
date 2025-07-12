@@ -10,11 +10,11 @@ export default defineConfig<TestOptions>({
 
     testDir: "tests",
     retries: 1,
-    // reporter: "html",
     reporter: [
-        ["json", { outputFile: "test-results/jsonReport.json" }],
-        ["junit", { outputFile: "test-results/junitReport.xml" }],
-        ["allure-playwright"],
+        // ["json", { outputFile: "test-results/jsonReport.json" }],
+        // ["junit", { outputFile: "test-results/junitReport.xml" }],
+        // ["allure-playwright"],
+        ["html"],
     ],
 
     use: {
