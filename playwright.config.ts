@@ -43,7 +43,12 @@ export default defineConfig<TestOptions>({
         },
         {
             name: "regression",
-            testIgnore: ["autoWaiting.spec.ts", "likesCounter.spec.ts", "likesCounterGlobal.spec.ts"],
+            testIgnore: [
+                "autoWaiting.spec.ts",
+                "likesCounter.spec.ts",
+                "likesCounterGlobal.spec.ts",
+                "testMobile.spec.ts",
+            ],
             testMatch: "**/*.spec.ts",
             use: {
                 ...devices["Desktop Chrome"],
@@ -83,6 +88,13 @@ export default defineConfig<TestOptions>({
             use: {
                 ...devices["Desktop Chrome"],
                 storageState: "tests/.authSetup/authFiles/user.json",
+            },
+        },
+        {
+            name: "Mobile",
+            testMatch: "testMobile.spec.ts",
+            use: {
+                ...devices["Pixel 7"],
             },
         },
 
