@@ -1,45 +1,51 @@
 # Playwright: Web Automation Testing From Zero to Hero
 
-**URL:** https://www.udemy.com/course/playwright-from-zero-to-hero/  
+**Course URL:** https://www.udemy.com/course/playwright-from-zero-to-hero/  
 **Author:** Artem Bondar  
 **Platform:** Udemy  
 **Year:** 2025
 
-This repository contains practical tasks from the course **Playwright: Web Automation Testing From Zero to Hero**. It covers topics such as:
+This repository contains practical tasks from the course **Playwright: Web Automation Testing From Zero to Hero**.
 
+It covers topics such as:
 - Installing Playwright
 - Locators and element interaction
 - API testing
 - Page Object Model and test organization
 - Advanced topics: Docker, mobile emulation, assertions
 
-## Structure:
+## Project Structure:
 
-- **/tests**
-    - **/.authSetup**
-    - **/api**
-    - **/web**
-- **/src**
-    - **/pages**
-    - **/test-data**
+- `/pw-practice-app` – frontend application
+- `/tests`
+  - `/.authSetup` – authentication setup
+  - `/api` – API tests
+  - `/web` – UI tests
+- `/src`
+  - `/pages` – Page Object classes
+  - `/test-data` – test data files
 
-## How to use:
+## How to Use
 
-1. Clone the repository with the test app:
-    - Run: `git clone https://github.com/bondar-artem/pw-practice-app.git`
-    - Navigate to the folder.
-    - Run `npm install --force` to install dependencies.
-    - Run `npm start` to run the app.
+1. **Clone this repository:**
+    - Open the terminal in an empty folder.
+    - Run `git clone https://github.com/YevhenTarasenko/playwright-zero-to-hero-udemy-by-bondar.git`
+2. **Install frontend dependencies:**
+    - Navigate to the `pw-practice-app` folder.
+    - Run `npm install --force`
+    - Run `npm start` to launch the frontend app.
+3. **Install test dependencies:**
+    - Go back to the main folder (`cd ..`).
+    - Run `npm install --force`
+    - Run tests using `npx playwright test`
 
-2. Create an empty folder for the automated tests:
-    - Clone this repository with the automated tests.
-    - Run `npm install` to install dependencies.
-    - Run `npm start` to start the application.
-    - Run the tests using `npx playwright test`.
+## Running with Docker:
 
-        2.1 How to run using the docker:
-        - Download and install docker from `https://www.docker.com/`.
-        - Run docker on your local machine.
-        - Run `docker build -t playwright-zero-to-hero-udemy-by-bondar .` to create docker image.
-        - Run `docker run -it playwright-zero-to-hero-udemy-by-bondar` to run docker image.
-        - Run `docker-compose up --build` to build and run tests at the same time.
+- Download and install Docker: https://www.docker.com/
+- Start Docker on your machine
+- Build the Docker image:  
+  `docker build -t playwright-zero-to-hero-udemy-by-bondar .`
+- Run the Docker container:  
+  `docker run -it playwright-zero-to-hero-udemy-by-bondar`
+- Or run everything with Docker Compose:  
+  `docker-compose up --build`

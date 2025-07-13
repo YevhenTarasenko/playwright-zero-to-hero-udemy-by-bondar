@@ -125,6 +125,7 @@ export default defineConfig<TestOptions>({
         //     use: { ...devices["Desktop Chrome"], baseURL: "http://localhost:4202/" },
         // },
     ],
+    // Run frontend application globally before tests
     webServer: {
         command: "cd pw-practice-app && npm start",
         url: "http://localhost:4200",
