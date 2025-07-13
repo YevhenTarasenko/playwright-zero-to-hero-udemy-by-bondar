@@ -28,14 +28,13 @@ It covers topics such as:
 ## How to Use
 
 1. **Clone this repository:**
-    - Open the terminal in an empty folder.
+    - Open the terminal in an empty folder
     - Run `git clone https://github.com/YevhenTarasenko/playwright-zero-to-hero-udemy-by-bondar.git`
 2. **Install frontend dependencies:**
-    - Navigate to the `pw-practice-app` folder.
+    - Navigate to the `pw-practice-app` folder
     - Run `npm install --force`
-    - Run `npm start` to launch the frontend app.
 3. **Install test dependencies:**
-    - Go back to the main folder (`cd ..`).
+    - Go back to the main folder (`cd ..`)
     - Run `npm install --force`
     - Run tests using `npx playwright test`
 
