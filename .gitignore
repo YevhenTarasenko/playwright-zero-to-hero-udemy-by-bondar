@@ -7,7 +7,6 @@ test-results/
 playwright-report/
 blob-report/
 playwright/.cache/
-.env
 allure-report/
 allure-results/
 uiComponents.spec.ts-snapshots/

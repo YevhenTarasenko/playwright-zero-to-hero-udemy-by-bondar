@@ -1,0 +1,7 @@
+services:
+    playwright-test:
+        build: .
+        volumes:
+            - ./playwright-report:/app/playwright-report
+            - ./test-results:/app/test-results
+        working_dir: /app

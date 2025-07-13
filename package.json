@@ -4,7 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "pw-chrome": "npx playwright test usePageObjects.spec.ts --project=chromium",
+        "pw-all-tests": "npx playwright test",
+        "pw-regression": "npx playwright test usePageObjects.spec.ts --project=regression",
         "pw-firefox": "npx playwright test usePageObjects.spec.ts --project=firefox",
         "pw-ui-mode": "npx playwright test --ui-host=0.0.0.0"
     },
@@ -14,7 +15,7 @@
     "type": "commonjs",
     "devDependencies": {
         "@faker-js/faker": "^9.9.0",
-        "@playwright/test": "^1.53.1",
+        "@playwright/test": "^1.54.1",
         "@types/node": "^24.0.3",
         "allure-playwright": "^3.3.0",
         "dotenv": "^17.0.1",

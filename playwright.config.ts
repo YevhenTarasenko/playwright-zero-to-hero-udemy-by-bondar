@@ -125,4 +125,9 @@ export default defineConfig<TestOptions>({
         //     use: { ...devices["Desktop Chrome"], baseURL: "http://localhost:4202/" },
         // },
     ],
+    webServer: {
+        command: "cd pw-practice-app && npm start",
+        url: "http://localhost:4200",
+        timeout: 120 * 1000,
+    },
 });

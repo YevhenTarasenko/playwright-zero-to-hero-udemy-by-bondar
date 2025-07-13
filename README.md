@@ -15,8 +15,13 @@ This repository contains practical tasks from the course **Playwright: Web Autom
 
 ## Structure:
 
-- **/tests** — automated tests
-- **/src** - pom
+- **/tests**
+    - **/.authSetup**
+    - **/api**
+    - **/web**
+- **/src**
+    - **/pages**
+    - **/test-data**
 
 ## How to use:
 
@@ -24,9 +29,17 @@ This repository contains practical tasks from the course **Playwright: Web Autom
     - Run: `git clone https://github.com/bondar-artem/pw-practice-app.git`
     - Navigate to the folder.
     - Run `npm install --force` to install dependencies.
+    - Run `npm start` to run the app.
 
 2. Create an empty folder for the automated tests:
     - Clone this repository with the automated tests.
     - Run `npm install` to install dependencies.
     - Run `npm start` to start the application.
     - Run the tests using `npx playwright test`.
+
+        2.1 How to run using the docker:
+        - Download and install docker from `https://www.docker.com/`.
+        - Run docker on your local machine.
+        - Run `docker build -t playwright-zero-to-hero-udemy-by-bondar .` to create docker image.
+        - Run `docker run -it playwright-zero-to-hero-udemy-by-bondar` to run docker image.
+        - Run `docker-compose up --build` to build and run tests at the same time.
