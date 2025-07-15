@@ -4,9 +4,9 @@ import type { TestOptions } from "./test-options";
 require("dotenv").config();
 
 export default defineConfig<TestOptions>({
-    timeout: 40000,
+    workers: process.env.CI ? 1 : 10,
+    timeout: 60000, //
     globalTimeout: undefined,
-    workers: 10,
 
     testDir: "tests",
     retries: 1,
