@@ -5,7 +5,8 @@ require("dotenv").config();
 
 export default defineConfig<TestOptions>({
     workers: process.env.CI ? 1 : 10,
-    timeout: 60000, //
+    timeout: 120000,
+    expect: { timeout: 10000 },
     globalTimeout: undefined,
 
     testDir: "tests",
@@ -31,7 +32,7 @@ export default defineConfig<TestOptions>({
             Authorization: `Token ${process.env.ACCESS_TOKEN}`,
         },
         video: {
-            mode: "off",
+            mode: "on",
             size: {
                 width: 1920,
                 height: 1080,

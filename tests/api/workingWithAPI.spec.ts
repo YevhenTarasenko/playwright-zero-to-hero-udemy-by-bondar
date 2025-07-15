@@ -64,6 +64,7 @@ test("create article from list", async ({ page, request }) => {
 test("create an article and delete", async ({ page, request }) => {
     //create an article
     await page.getByText("New Article").click();
+    await page.waitForSelector('text="New Article"', { state: "visible", timeout: 15000 });
     await page.getByRole("textbox", { name: "Article Title" }).fill("PW is awesome");
     await page.getByRole("textbox", { name: "What's this article about?" }).fill("PW this is article about");
     await page
