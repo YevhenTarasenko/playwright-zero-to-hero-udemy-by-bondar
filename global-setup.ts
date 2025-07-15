@@ -1,10 +1,10 @@
 import { expect, request } from "@playwright/test";
-import user from "./tests/.authSetup/authFiles/user.json";
 import fs from "fs";
+import path from "path";
+
+const authFile = path.resolve(__dirname, "tests/.authSetup/authFiles/user.json");
 
 async function globalSetup() {
-    const authFile = "tests/.authSetup/authFiles/user.json";
-
     const context = await request.newContext();
 
     const responseToken = await context.post("https://conduit-api.bondaracademy.com/api/users/login", {
@@ -15,10 +15,33 @@ async function globalSetup() {
             },
         },
     });
+    expect(responseToken.status()).toEqual(200);
     const responseBody = await responseToken.json();
     const accessToken = responseBody.user.token;
-    user.origins[0].localStorage[0].value = accessToken;
-    fs.writeFileSync(authFile, JSON.stringify(user));
+    expect(accessToken).toBeTruthy();
+
+    let userJson: any;
+    if (fs.existsSync(authFile)) {
+        userJson = JSON.parse(fs.readFileSync(authFile, "utf-8"));
+        userJson.origins[0].localStorage[0].value = accessToken;
+    } else {
+        userJson = {
+            origins: [
+                {
+                    origin: "https://conduit.bondaracademy.com",
+                    localStorage: [
+                        {
+                            name: "jwt",
+                            value: accessToken,
+                        },
+                    ],
+                },
+            ],
+        };
+    }
+
+    fs.mkdirSync(path.dirname(authFile), { recursive: true });
+    fs.writeFileSync(authFile, JSON.stringify(userJson, null, 2));
 
     process.env["ACCESS_TOKEN"] = accessToken;
 
@@ -32,14 +55,14 @@ async function globalSetup() {
             },
         },
         headers: {
-            Authorization: `Token ${process.env.ACCESS_TOKEN}`,
+            Authorization: `Token ${accessToken}`,
         },
     });
+
     expect(articleResponse.status()).toEqual(201);
 
     const articleData = await articleResponse.json();
-    const articleSlug = articleData.article.slug;
-    process.env["SLUGID"] = articleSlug;
+    process.env["SLUGID"] = articleData.article.slug;
 }
 
 export default globalSetup;

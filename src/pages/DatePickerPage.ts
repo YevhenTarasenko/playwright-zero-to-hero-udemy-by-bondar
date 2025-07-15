@@ -1,5 +1,5 @@
-import { expect, Page } from '@playwright/test';
-import { HelperBase } from './HelperBase';
+import { expect, Page } from "@playwright/test";
+import { HelperBase } from "./HelperBase";
 
 export class DatePickerPage extends HelperBase {
     constructor(page: Page) {
@@ -7,7 +7,7 @@ export class DatePickerPage extends HelperBase {
     }
 
     async selectCommonDatePickerDateFromToday(numberOfDaysFromToday: number) {
-        const calendarInputField = this.page.getByPlaceholder('Form Picker');
+        const calendarInputField = this.page.getByPlaceholder("Form Picker");
         await calendarInputField.click();
         const dateToAssert = await this.selectDateInTheCalendar(numberOfDaysFromToday);
 
@@ -15,7 +15,7 @@ export class DatePickerPage extends HelperBase {
     }
 
     async selectDatePickerWithRangeFromToday(startDayFromToday: number, endDayFromToday: number) {
-        const calendarInputField = this.page.getByPlaceholder('Range Picker');
+        const calendarInputField = this.page.getByPlaceholder("Range Picker");
         await calendarInputField.click();
         const dateToAssertStart = await this.selectDateInTheCalendar(startDayFromToday);
         const dateToAssertEnd = await this.selectDateInTheCalendar(endDayFromToday);
@@ -28,21 +28,21 @@ export class DatePickerPage extends HelperBase {
         let date = new Date();
         date.setDate(date.getDate() + numberOfDaysFromToday);
         const expectedDate = date.getDate().toString();
-        const expectedMonthShort = date.toLocaleString('En-US', { month: 'short' });
-        const expectedMonthLong = date.toLocaleString('En-US', { month: 'long' });
+        const expectedMonthShort = date.toLocaleString("En-US", { month: "short" });
+        const expectedMonthLong = date.toLocaleString("En-US", { month: "long" });
 
         const expectedYear = date.getFullYear();
         const dateToAssert = `${expectedMonthShort} ${expectedDate}, ${expectedYear}`;
 
-        let calendarMontAndYear = await this.page.locator('nb-calendar-view-mode').textContent();
+        let calendarMontAndYear = await this.page.locator("nb-calendar-view-mode").textContent();
         const expectedMontAndYear = ` ${expectedMonthLong} ${expectedYear}`;
 
         while (!calendarMontAndYear?.includes(expectedMontAndYear)) {
             await this.page.locator('nb-calendar-pageable-navigation [data-name="chevron-right"]').click();
-            calendarMontAndYear = await this.page.locator('nb-calendar-view-mode').textContent();
+            calendarMontAndYear = await this.page.locator("nb-calendar-view-mode").textContent();
         }
 
-        await this.page.locator('.day-cell.ng-star-inserted').getByText(expectedDate, { exact: true }).click();
+        await this.page.locator(".day-cell.ng-star-inserted").getByText(expectedDate, { exact: true }).last().click();
 
         return dateToAssert;
     }
