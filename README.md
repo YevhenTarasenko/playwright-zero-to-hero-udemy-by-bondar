@@ -12,7 +12,7 @@ It covers topics such as:
 - Locators and element interaction
 - API testing
 - Page Object Model and test organization
-- Advanced topics: Docker, mobile emulation, assertions
+- Advanced topics: Fixtures, Mobile Emulation, Docker, GitHub Actions
 
 ## Project Structure:
 
