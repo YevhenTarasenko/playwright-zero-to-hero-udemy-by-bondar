@@ -9,10 +9,10 @@ test.beforeEach(async ({ page }) => {
 test.describe("Form Layout page", () => {
     test.describe.configure({ retries: 2 });
 
-    test.beforeEach(async ({ page }) => {
-        await page.getByText("Forms").click();
-        await page.getByText("Form Layouts").click();
-    });
+    // test.beforeEach(async ({ page }) => {
+    //     await page.getByText("Forms").click();
+    //     await page.getByText("Form Layouts").click();
+    // });
 
     test("inputs", async ({ page }, testInfo) => {
         if (testInfo.retry) {
