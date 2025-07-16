@@ -5,8 +5,8 @@ require("dotenv").config();
 
 export default defineConfig<TestOptions>({
     workers: process.env.CI ? 1 : 10,
-    timeout: 120000,
-    expect: { timeout: 10000 },
+    timeout: 45000,
+    expect: { timeout: 5000 },
     globalTimeout: undefined,
 
     testDir: "tests",

@@ -31,14 +31,14 @@ test("parametrized methods @smoke", async ({ page }) => {
         );
 
     // screenshot for all FormLayout page
-    await page.screenshot({ path: "screenshots/formsLayoutsPage.png" });
+    // await page.screenshot({ path: "screenshots/formsLayoutsPage.png" });
     // const buffer = await page.screenshot();
     // console.log(buffer.toString("base64"));
 
     await pm.onFormLayoutPage().submitInlineFormWithNameEmailAndCheckbox(randomFullName, randomEmail, true);
 
     // screenshot only for inline form
-    await page.locator("nb-card", { hasText: "Inline form" }).screenshot({ path: "screenshots/inlineForm.png" });
+    // await page.locator("nb-card", { hasText: "Inline form" }).screenshot({ path: "screenshots/inlineForm.png" });
 
     await pm.navigateTo().datepickerPage();
     await pm.onDatePickerPage().selectCommonDatePickerDateFromToday(5);

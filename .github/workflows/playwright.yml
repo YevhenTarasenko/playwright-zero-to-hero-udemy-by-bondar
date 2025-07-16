@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: Playwright Tests in Docker
 on:
     push:
         branches: [develop]
@@ -9,27 +9,22 @@ jobs:
     test:
         timeout-minutes: 60
         runs-on: ubuntu-latest
+        container:
+            # Використовуємо офіційний образ Playwright (або ваш зібраний)
+            image: mcr.microsoft.com/playwright:v1.54.1-jammy
+            options: --shm-size=2gb # Важливо для стабільності браузерів!
+
         steps:
             - uses: actions/checkout@v4
 
-            - name: Setup Node.js
-              uses: actions/setup-node@v4
-              with:
-                  node-version: lts/*
+            # Встановлюємо залежності та запускаємо тести всередині контейнера
+            - name: Install dependencies and run tests
+              run: |
+                  npm ci --force
+                  cd pw-practice-app && npm ci --force && cd ..
+                  npx playwright test --workers=1 --timeout=60000
 
-            - name: Install frontend dependencies
-              working-directory: ./pw-practice-app
-              run: npm ci --force
-
-            - name: Install test dependencies
-              run: npm ci --force
-
-            - name: Install Playwright Browsers
-              run: npx playwright install --with-deps --force
-
-            - name: Run Playwright tests
-              run: npx playwright test --workers=1 --timeout=60000
-
+            # Артефакти (звіти)
             - uses: actions/upload-artifact@v4
               if: ${{ !cancelled() }}
               with:
